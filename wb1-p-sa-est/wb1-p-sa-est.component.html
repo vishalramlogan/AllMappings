@@ -1,0 +1,75 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToWebBrowsing()">Web-Browsing</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <h1 class ="title">Expected Max Session Time Sensitivity Analysis for 1-page Sessions</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+        <form (submit)="calculate($event)" class="join-form">
+            <div class="form-container">
+                <div class="form-left">
+                  <div class="form-field">                    
+                      <div class="input-group">
+                        <label>Session time</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="sessionTime">
+                          <span>s</span>
+                        </div>
+                      </div>                                         
+                  </div>
+                </div>
+                <div class="form-right">
+                  <div class="form-field">
+                    <div class="input-group">
+                        <label>Expected Maximum Session Time</label>
+                        <p class="hint">around 10s to 100s</p>
+                        <div class="input-groups">
+                          <div style="display: inline-flex;">
+                            <input type="number" id="expectedSessionTime1">
+                            <span>s</span>
+                          </div>
+                        </div>
+                        <div class="input-groups">
+                          <div style="display: inline-flex;">
+                            <input type="number" id="expectedSessionTime2">
+                            <span>s</span>
+                          </div>
+                        </div>
+                        <div class="input-groups">
+                          <div style="display: inline-flex;">
+                            <input type="number" id="expectedSessionTime3">
+                            <span>s</span>
+                          </div>
+                        </div>
+                        <div class="input-groups">
+                          <div style="display: inline-flex;">
+                            <input type="number" id="expectedSessionTime4">
+                            <span>s</span>
+                          </div>
+                        </div>
+                        <div class="input-groups">
+                          <div style="display: inline-flex;">
+                            <input type="number" id="expectedSessionTime5">
+                            <span>s</span>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div> 
+                <button type="submit" class="butn">Calculate</button>
+              </div>              
+          </form>        
+    </section>
+  </div>
+</body>

@@ -1,0 +1,181 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToVoiceTelephony()">Voice Telephony</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div> 
+  </header>
+  <h1 class ="title">Narrowband E-Model QoS-to-QoE Mapping</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+        <form (submit)="calculate($event)" class="join-form">
+            <div class="form-container">
+                <div class="form-left">
+                  <div class="form-field">
+                    <div class="input-group">
+                        <label>Electric Circuit Noise</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="electricCircuitNoise">
+                          <span>dBm0p</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Noise Floor</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="noiseFloor">
+                          <span>dBmp</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Room Noise (Sender)</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="roomNoiseS">
+                          <span>dB(A)</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Room Noise (Receiver)</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="roomNoiseR">
+                          <span>dB(A)</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Sender Loudness Rating </label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="sLoudnessRating">
+                          <span>dB</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Receiver Loudness Rating</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="rLoudnessRating">
+                          <span>dB</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Sidetone Masking Rating</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="sidetoneMaskingRating">
+                          <span>dB</span>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="form-center">
+                    <div class="form-field">
+                      <div class="input-group">
+                          <label>D-factor (Receiver)</label>
+                          <div style="display: inline-flex;">
+                            <input type="number" id="dFactorR">
+                          </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Advantage Factor</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="advantageFactor">
+                            </div>
+                          </div>
+                          <div class="input-group">
+                            <label>D-factor (Sender)</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="dFactorS">
+                            </div>
+                          </div>
+                        <div class="input-group">
+                            <label>Class of Delay Sensitivity</label>
+                            <div style="display: inline-flex;">
+                              <input type="string" id="classDelaySensitivity">
+                            </div>
+                            <p class="hint">Default, Low or Very Low</p>
+                        </div>
+                        <div class="input-group">
+                            <label>Mean One-Way Delay</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="meanOneWayDelay">
+                              <span>ms</span>
+                            </div>
+                          </div>
+                          <div class="input-group">
+                            <label>Absolute Delay</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="absoluteDelay">
+                              <span>ms</span>
+                            </div>
+                          </div>
+                          <div class="input-group">
+                            <label>Round-Trip Delay </label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="roundTripDelay">
+                              <span>ms</span>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                <div class="form-right">
+                  <div class="form-field">
+                    <div class="input-group">
+                        <label>Talker Echo Loudness Rating </label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="talkerEchoLoudness">
+                          <span>dB</span>
+                        </div>
+                      </div>
+                    <div class="input-group">
+                        <label>Weighted Echo Path Loss</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="weightedEchoPathLoss">
+                          <span>dB</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Quantization Distortion Units</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="qdu">
+                        </div>
+                      </div>
+                    <div class="input-group">
+                        <label>Equipment Impairment Factor</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="equipmentImpairmentFac">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Packet-Loss Robustness Factor</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="packetLossRobustness">
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Packet-Loss Probability</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="packetLossProb">
+                          <span>%</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Burst Ratio</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="burstRate">
+                          <span>ms</span>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div> 
+                <button type="submit" class="butn">Calculate</button>
+              </div>              
+          </form>            
+        <h1 class="join-text">MOS:</h1>
+        <h1 class="join-text" *ngIf="Message">{{Message}}</h1>
+    </section>
+  </div>
+</body>

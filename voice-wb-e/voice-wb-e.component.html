@@ -1,0 +1,90 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToVoiceTelephony()">Voice Telephony</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div> 
+  </header>
+  <h1 class ="title">Wideband E-Model QoS-to-QoE Mapping</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+        <form (submit)="calculate($event)" class="join-form">
+            <div class="form-container">
+                <div class="form-left">
+                  <div class="form-field">
+                    <div class="input-group">
+                        <label>Mean One-Way Delay</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="meanOneWayDelay">
+                          <span>ms</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Packet-Loss Probability</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="packetLossProb">
+                          <span>%</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Talker Echo Loudness Rating </label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="talkerEchoLoudRating">
+                          <span>dB</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Equipment Impairment Factor</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="equipmentImpairment">
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-right">
+                  <div class="form-field">
+                    <div class="input-group">
+                        <label>Absolute Delay</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="absoluteDelay">
+                          <span>ms</span>
+                        </div>
+                      </div>
+                    <div class="input-group">
+                        <label>Round Trip Delay</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="roundTripDelay">
+                          <span>ms</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <label>Weighted Echo Path Loss</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="weightedEchoPathLoss">
+                          <span>dB</span>
+                        </div>
+                      </div>
+                    <div class="input-group">
+                        <label>Packet-Loss Robustness Factor</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="packetLossRobustness">
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div> 
+                <button type="submit" class="butn">Calculate</button>
+              </div>              
+          </form>            
+        <h1 class="join-text">MOS:</h1>
+        <h1 class="join-text" *ngIf="Message">{{Message}}</h1>
+    </section>
+  </div>
+</body>

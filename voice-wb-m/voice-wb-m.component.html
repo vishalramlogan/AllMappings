@@ -1,0 +1,61 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToVoiceTelephony()">Voice Telephony</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div> 
+  </header>
+  <h1 class ="title">Wideband Speech QoS-to-QoE Mapping</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+      <form (submit)="calculate($event)" class="join-form">
+        <div class="input-group">
+          <label>Speech Delay</label>
+          <div style="display: inline-flex;">
+            <input type="number" id="speechDelay">
+            <span>ms</span>
+          </div>
+          <p class="hint">must be less than 1000 ms</p>
+        </div>
+        <div class="input-group">
+            <label>Speech Packet-Loss Rate</label>
+            <div style="display: inline-flex;">
+              <input type="number" id="packetLoss">
+              <span>%</span>
+            </div>
+            <p class="hint">should be less than 20%</p>
+        </div>
+        <div class="input-group">
+          <label>Talker Echo Loudness Rating </label>
+          <div style="display: inline-flex;">
+            <input type="number" id="talkerEcho">
+            <span>dB</span>
+          </div>
+        </div>
+        <div class="input-group">
+            <label>Equipment Impairment Factor </label>
+            <div style="display: inline-flex;">
+              <input type="number" id="impairmentFactor">
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Packet-Loss Robustness Factor </label>
+            <div style="display: inline-flex;">
+              <input type="number" id="packetLossRobustness">
+            </div>
+        </div>
+        <div> 
+          <button type="submit" class="butn">Calculate</button>
+        </div>
+    </form>  
+        <h1 class="join-text">MOS:</h1>
+        <h1 class="join-text" *ngIf="Message">{{Message}}</h1>
+    </section>
+  </div>
+</body>
