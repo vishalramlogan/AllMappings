@@ -1,0 +1,70 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToVideoTelephony()">Video Telephony</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div> 
+  </header>
+  <h1 class ="title">Video Telephony QoS-to-QoE Mapping</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+        <form (submit)="calculate($event)" class="join-form">
+            <div class="form-container">
+                <div class="form-left">
+                  <div class="form-field">
+                    <div class="input-group">
+                      <label>Video Packet-Loss Rate </label>
+                      <div style="display: inline-flex;">
+                        <input type="number" id="videoPacketLoss">
+                        <span>%</span>
+                      </div>
+                      <p class="hint">should be less than 10%</p>
+                    </div>
+                    <div class="input-group">
+                        <label>Video Frame Rate</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="videoFrameRate">
+                          <span>fps</span>
+                        </div>
+                        <p class="hint">should between 1fps and 30 fps</p>
+                    </div>
+                    <div class="input-group">
+                      <label>Video Bitrate </label>
+                      <div style="display: inline-flex;">
+                        <input type="number" id="videoBitRate">
+                        <span>kbits/s</span>
+                      </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Combination</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="combinationVT">
+                        </div>
+                        <p class="hint">1 to 21</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-right">
+                  <p>Select a combination based on factor and screen size   </p>
+                        <div class="call-to-action">
+                          <div class ="img-wrapper">
+                            <div class="audio-image"></div>
+                          </div>
+                        </div>                      
+                </div>
+              </div>
+              <div> 
+                <button type="submit" class="butn">Calculate</button>
+              </div>              
+          </form>            
+        <h1 class="join-text">MOS:</h1>
+        <h1 class="join-text" *ngIf="Message">{{Message}}</h1>
+    </section>
+  </div>
+</body>

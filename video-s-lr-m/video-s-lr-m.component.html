@@ -1,0 +1,173 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToVideoStreaming()">Video Streaming</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div> 
+  </header>
+  <h1 class ="title">Video Streaming Lower Resolution QoS-to-QoE Mapping</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+        <form (submit)="calculate($event)" class="join-form">
+            <div class="form-container">
+                <div class="form-left">
+                  <div class="form-field">
+                    <div class="input-group">
+                      <label>Is there Packet Loss?</label>
+                      <div style="display: inline-flex;">
+                        <input type="string" id="packetLoss">
+                      </div>
+                      <p class="hint">yes or no</p>
+                    </div>
+                    <div class="input-group">
+                        <label>Is there Rebuffering?</label>
+                        <div style="display: inline-flex;">
+                          <input type="string" id="rebuffering">
+                        </div>
+                        <p class="hint">yes or no</p>
+                      </div>
+                    <div class="input-group">
+                        <label>Video Width</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="videoWidth">
+                          <span>pixels</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Video Height</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="videoHeight">
+                          <span>pixels</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                      <label>Video PLC</label>
+                      <div style="display: inline-flex;">
+                        <input type="string" id="videoPLC">            
+                      </div>
+                      <p class="hint">slicing or freezing</p>
+                    </div>
+                    <div class="input-group">
+                        <label>Avreage rebuffering length</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="rebufferingLength">
+                        </div>
+                    </div>   
+                    <div class="input-group">
+                        <label># Rebuffering events</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="numRebufferingEvents">
+                        </div>
+                    </div> 
+                    <div class="input-group">
+                        <label>Multiple rebuffering events effect factor</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="rebufferingFactor">
+                        </div>
+                    </div>                                        
+                  </div>
+                </div>
+                <div class="form-right">
+                  <div class="form-field">
+                  <div class="call-to-action">
+                    <div class ="img-wrapper">
+                      <div class="audio-image"></div>
+                    </div>
+                  </div>  
+                  <br>
+                  <br><br>
+                  <br>
+                  <div class="call-to-action">
+                    <div class ="img-wrapper">
+                      <div class="audio-image2"></div>
+                    </div>
+                  </div>  
+                  <div class="form-left2">
+                    <div class="form-field"> 
+                        <div class="input-group">
+                            <label class="move">Video Content Complexity Coding Compression</label>
+                            <div style="display: inline-flex;">
+                              <input type="string" id="videoContentCoding">
+                            </div>
+                            <p class="hint">1 to 5</p>
+                        </div>
+                        <div class="input-group">
+                            <label>Variable num Buffering Events</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="numVideos">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Measure Time</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="measureTime">
+                              <span>s</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Average Burst IP Packet Loss Length Per Video Stream</label>
+                            <div style="display: inline-flex;">
+                              <input type="string" id="ipPacketLoss">
+                            </div>
+                            <p class="hint">less than 1</p>
+                        </div>
+                    </div>
+                  </div>  
+                  <div class="form-right2">
+                    <div class="form-field"> 
+                        <div class="input-group">
+                            <label class="move">Other Coding Compression</label>
+                            <div style="display: inline-flex;">
+                              <input type="string" id="codingCompression">
+                            </div>
+                            <p class="hint">1 to 6</p>
+                        </div>
+                        <div class="input-group">
+                            <label>IP Packet Loss Rate</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="ipPacketLossRate">
+                              <span>%</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>GOP Length</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="gopLength">
+                              <span>frames</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Video Bitrate</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="videoBitrate">
+                              <span>Mbits/s</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Video Frame Rate</label>
+                            <div style="display: inline-flex;">
+                              <input type="number" id="videoFrameRate">
+                              <span>fps</span>
+                            </div>
+                        </div>
+
+                    </div>
+                  </div> 
+                  </div>                                                              
+                </div>
+              </div>
+              <div> 
+                <button type="submit" class="butn">Calculate</button>
+              </div>              
+          </form>            
+        <h1 class="join-text">MOS:</h1>
+        <h1 class="join-text" *ngIf="Message">{{Message}}</h1>
+    </section>
+  </div>
+</body>

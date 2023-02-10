@@ -1,0 +1,86 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToAudioStreaming()">Audio Streaming</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div> 
+  </header>
+  <h1 class ="title">Audio Streaming Lower Resolution QoS-to-QoE Mapping</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+        <form (submit)="calculate($event)" class="join-form">
+            <div class="form-container">
+                <div class="form-left">
+                  <div class="form-field">
+                    <div class="input-group">
+                      <label>Audio Bitrate</label>
+                      <div style="display: inline-flex;">
+                        <input type="number" id="audioBitrateLR">
+                        <span>kbits/s</span>
+                      </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Audio Frame Length</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="audioFrameLength">
+                          <span>ms</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                      <label>Average Burst IP Packet Loss Length</label>
+                      <div style="display: inline-flex;">
+                        <input type="number" id="averageBurstIP">
+                        <span>bytes</span>
+                      </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Max Size for Audio Stream per 1 RTP Packet</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="maxSizeAudioStream">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Loss Rate of IP Packets</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="lossRateIPPackets">
+                          <span>%</span>
+                        </div>
+                    </div>                    
+                  </div>
+                </div>
+                <div class="form-right">                  
+                  <p>Select a Audio Codec</p>
+                  <div class="call-to-action">
+                    <div class ="img-wrapper">
+                      <div class="audio-image"></div>
+                    </div>
+                  </div>  
+                  <div class="input-group">
+                      <label class="move">Audio Codec</label>
+                      <div style="display: inline-flex;">
+                        <input type="string" id="audioCodec">
+                      </div>
+                  </div>   
+                  <div class="input-group">
+                    <label># Audio Frames in 1 RTP Packet</label>
+                    <div style="display: inline-flex;">
+                      <input type="number" id="numAudioFrames">
+                    </div>
+                </div>                                         
+                </div>
+              </div>
+              <div> 
+                <button type="submit" class="butn">Calculate</button>
+              </div>              
+          </form>            
+        <h1 class="join-text">MOS:</h1>
+        <h1 class="join-text" *ngIf="Message">{{Message}}</h1>
+    </section>
+  </div>
+</body>

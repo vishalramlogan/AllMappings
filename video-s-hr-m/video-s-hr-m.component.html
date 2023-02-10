@@ -1,0 +1,89 @@
+<link href="styles.scss" rel="stylessheet">
+<body class="full-height-grow">
+  <header class ="home-header">
+    <div class="container">
+      <nav class="home-nav">
+        <ul>
+          <li><a (click)="navigateToHomepage()">Return to Homepage</a></li>
+          <li><a (click)="navigateToVideoStreaming()">Video Streaming</a></li>
+          <li class="right-aligned"><a (click)="navigateToUserProfile()" id="username"><span id="username-value"></span></a></li>
+        </ul>
+      </nav>
+    </div> 
+  </header>
+  <h1 class ="title">Video Streaming Higher Resolution QoS-to-QoE Mapping</h1> 
+  <div class="containerc"> 
+    <section class="join-main-section">
+        <form (submit)="calculate($event)" class="join-form">
+            <div class="form-container">
+                <div class="form-left">
+                  <div class="form-field">
+                    <div class="input-group">
+                      <label>Video Bitrate</label>
+                      <div style="display: inline-flex;">
+                        <input type="number" id="videoBitrate">
+                        <span>Mbits/s</span>
+                      </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Freezing Ratio</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="freezingRatio">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                      <label>Video PLC</label>
+                      <div style="display: inline-flex;">
+                        <input type="string" id="videoPLC">            
+                      </div>
+                      <p class="hint">slicing or freezing</p>
+                    </div>
+                    <div class="input-group">
+                        <label># Pixels Per Video Frame</label>
+                        <div style="display: inline-flex;">
+                          <input type="number" id="numPixelsPerVideo">
+                        </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="form-right">
+                  <div class="form-field">
+                    <div class="input-group">
+                      <label>Slice/Frame</label>
+                      <div style="display: inline-flex;">
+                        <input type="number" id="sliceFrame">
+                      </div>
+                      <p class="hint">less than or equal to 1</p>
+                  </div> 
+                  <div class="input-group">
+                    <label>Video Resolution</label>
+                    <div style="display: inline-flex;">
+                      <input type="string" id="videoResolution">
+                    </div>
+                    <p class="hint">HD or SD</p>
+                </div> 
+                <div class="input-group">
+                  <label>Frame Rate</label>
+                  <div style="display: inline-flex;">
+                    <input type="number" id="frameRate">
+                    <span>fps</span>
+                  </div>
+                </div>
+                <div class="input-group">
+                    <label>Loss Magnitude</label>
+                    <div style="display: inline-flex;">
+                      <input type="string" id="lossMagnitude">
+                    </div>
+                </div>  
+                  </div>                                                              
+                </div>
+              </div>
+              <div> 
+                <button type="submit" class="butn">Calculate</button>
+              </div>              
+          </form>            
+        <h1 class="join-text">MOS:</h1>
+        <h1 class="join-text" *ngIf="Message">{{Message}}</h1>
+    </section>
+  </div>
+</body>
