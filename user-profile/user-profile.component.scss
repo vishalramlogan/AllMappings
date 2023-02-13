@@ -33,7 +33,17 @@
 .join-form {
     background-color: #8EE4AF;
     //width: 50vw;
-    //max-width: 100%;
+    max-width: 100%;
     padding: 2rem 4rem;
     border-radius: 20px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 0.5px solid #05386B;
+    color:  #05386B;
   }

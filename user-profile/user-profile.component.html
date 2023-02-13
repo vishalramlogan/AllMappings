@@ -10,8 +10,388 @@
     </div>
   </header>
   <div class="containerc">
+    <br>
     <div class="join-form">
-        <p class="title" id="username">Hello <span id="username-value"></span></p>           
-    </div>     
+        <p class="title" id="username">Hello <span id="username-value"></span></p>  
+        <h3>Audio Streaming Higher Resolution</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 0">
+              <tr>
+                <th >Audio Bitrate</th>
+                <th >Video Bitrate</th>
+                <th >RTP Packet Loss</th>
+                <th >STP Packet Loss Burstiness</th>
+                <th ># RTP Packets containing TS Packets</th>
+                <th >Burst Length</th>
+                <th >Audio Codec</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.audioBitrate">{{ item.audioBitrate }}</td>
+                <td *ngIf="item.videoBitrate">{{ item.videoBitrate }}</td>
+                <td *ngIf="item.rtpPacketLoss">{{ item.rtpPacketLoss }}</td>
+                <td *ngIf="item.rtpPacketLossBurstiness">{{ item.rtpPacketLossBurstiness }}</td>
+                <td *ngIf="item.numRTPPacketsTSPackets">{{ item.numRTPPacketsTSPackets }}</td>
+                <td *ngIf="item.burstLengthA">{{ item.burstLengthA }}</td>
+                <td *ngIf="item.audioCodec">{{ item.audioCodec }}</td>
+                <td *ngIf="item.mosASHR">{{ item.mosASHR }}</td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Audio Streaming Lower Resolution</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 1">
+              <tr>
+                <th >Audio Bitrate</th>
+                <th >Audio Frame Length</th>
+                <th >Average Burst IP Packet Loss Length</th>
+                <th >Max Size for Audio Stream per 1 RTP Packet</th>
+                <th >Loss Rate of IP Packets</th>
+                <th >Audio Codec</th>
+                <th ># Audio Frames in 1 RTP Packet</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.audioBitrateLR">{{ item.audioBitrateLR }}</td>
+                <td *ngIf="item.audioFrameLength">{{ item.audioFrameLength }}</td>
+                <td *ngIf="item.averageBurstIP">{{ item.averageBurstIP }}</td>
+                <td *ngIf="item.maxSizeAudioStream">{{ item.maxSizeAudioStream }}</td>
+                <td *ngIf="item.lossRateIPPackets">{{ item.lossRateIPPackets }}</td>                
+                <td *ngIf="item.audioCodec">{{ item.audioCodec }}</td>
+                <td *ngIf="item.numAudioFrames">{{ item.numAudioFrames }}</td>
+                <td *ngIf="item.mosASLR">{{ item.mosASLR }}</td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>E Model Fullband</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 2">
+              <tr>
+                <th >Absolute Delay</th>
+                <th >Packet-Loss Probability</th>
+                <th >Equipment Impairment Factor</th>
+                <th >Packet-Loss Robustness Factor</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.absoluteDelay">{{ item.absoluteDelay }}</td>
+                <td *ngIf="item.packetLossProb">{{ item.packetLossProb }}</td>
+                <td *ngIf="item.equipmentImpairmentFac">{{ item.equipmentImpairmentFac }}</td>
+                <td *ngIf="item.packetLossImpairmentFac">{{ item.packetLossImpairmentFac }}</td>
+                <td *ngIf="item.mosEMF">{{ item.mosEMF }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>E Model Narrowband</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 3">
+              <tr>
+                <th >Electric Circuit Noise</th>
+                <th >Noise Floor</th>
+                <th >Room Noise (S)</th>
+                <th >Room Noise (R)</th>
+                <th >S Loud</th>
+                <th >R Loud</th>
+                <th >Sidetone Masking</th>
+                <th >D-factor (R)</th>
+                <th >D-factor (S)</th>
+                <th >Delay Sens.</th>
+                <th >Mean One-Way Delay</th>
+                <th >Absolute Delay</th>
+                <th >Round-Trip Delay</th>
+                <th >Talker Echo Loudness</th>
+                <th >Weighted Echo Path Loss</th>
+                <th >QDU</th>
+                <th >Equipment Impairment Factor</th>
+                <th >Packet-Loss Robustness Factor</th>
+                <th >Packet-Loss Prob.</th>
+                <th >Burst Ratio</th>
+                <th >Adv. Factor</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.electricCircuitNoise">{{ item.electricCircuitNoise }}</td>
+                <td *ngIf="item.noiseFloor">{{ item.noiseFloor }}</td>
+                <td *ngIf="item.roomNoiseS">{{ item.roomNoiseS }}</td>
+                <td *ngIf="item.roomNoiseR">{{ item.roomNoiseR }}</td>
+                <td *ngIf="item.sLoudnessRating">{{ item.sLoudnessRating }}</td>
+                <td *ngIf="item.rLoudnessRating">{{ item.rLoudnessRating }}</td>
+                <td *ngIf="item.sidetoneMaskingRating">{{ item.sidetoneMaskingRating }}</td>
+                <td *ngIf="item.dFactorR">{{ item.dFactorR }}</td>
+                <td *ngIf="item.dFactorS">{{ item.dFactorS }}</td>
+                <td *ngIf="item.classDelaySensitivity">{{ item.classDelaySensitivity }}</td>
+                <td *ngIf="item.meanOneWayDelay">{{ item.meanOneWayDelay }}</td>
+                <td *ngIf="item.absoluteDelay">{{ item.absoluteDelay }}</td>
+                <td *ngIf="item.roundTripDelay">{{ item.roundTripDelay }}</td>
+                <td *ngIf="item.talkerEchoLoudness">{{ item.talkerEchoLoudness }}</td>
+                <td *ngIf="item.weightedEchoPathLoss">{{ item.weightedEchoPathLoss }}</td>
+                <td *ngIf="item.qdu">{{ item.qdu }}</td>
+                <td *ngIf="item.equipmentImpairmentFac">{{ item.equipmentImpairmentFac }}</td>
+                <td *ngIf="item.packetLossRobustness">{{ item.packetLossRobustness }}</td>
+                <td *ngIf="item.packetLossProb">{{ item.packetLossProb }}</td>
+                <td *ngIf="item.burstRate">{{ item.burstRate }}</td>
+                <td *ngIf="item.advantageFactor">{{ item.advantageFactor }}</td>
+                <td *ngIf="item.mosEMN">{{ item.mosEMN }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>E Model Wideband</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 4">
+              <tr>
+                <th >Mean One-Way Delay</th>
+                <th >Packet-Loss Probability</th>
+                <th >Talker Echo Loudness Rating </th>
+                <th >Equipment Impairment Factor</th>
+                <th >Absolute Delay</th>
+                <th >Round Trip Delay </th>
+                <th >Weighted Echo Path Loss</th>
+                <th >Packet-Loss Robustness Factor</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.meanOneWayDelay">{{ item.meanOneWayDelay }}</td>
+                <td *ngIf="item.packetLossProb">{{ item.packetLossProb }}</td>
+                <td *ngIf="item.talkerEchoLoudRating">{{ item.talkerEchoLoudRating }}</td>
+                <td *ngIf="item.equipmentImpairment">{{ item.equipmentImpairment }}</td>
+                <td *ngIf="item.absoluteDelay">{{ item.absoluteDelay }}</td>
+                <td *ngIf="item.roundTripDelay">{{ item.roundTripDelay }}</td>
+                <td *ngIf="item.weightedEchoPathLoss">{{ item.weightedEchoPathLoss }}</td>
+                <td *ngIf="item.packetLossRobustness">{{ item.packetLossRobustness }}</td>
+                <td *ngIf="item.mosEMW">{{ item.mosEMW }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Gaming</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 5">
+              <tr>
+                <th >Bitrate</th>
+                <th ># Pixels Per Video Frame</th>
+                <th >Packet Loss</th>
+                <th >Encoding Frame Rate</th>
+                <th >Loss Sensitivity Class</th>
+                <th >Encoding Complexity</th>
+                <th >Delay</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.bitrate">{{ item.bitrate }}</td>
+                <td *ngIf="item.numPixelsPerVideo">{{ item.numPixelsPerVideo }}</td>
+                <td *ngIf="item.packetLoss">{{ item.packetLoss }}</td>
+                <td *ngIf="item.encodingFrameRate">{{ item.encodingFrameRate }}</td>
+                <td *ngIf="item.lossSensitivityClass">{{ item.lossSensitivityClass }}</td>
+                <td *ngIf="item.encodingComplexity">{{ item.encodingComplexity }}</td>
+                <td *ngIf="item.delay">{{ item.delay }}</td>
+                <td *ngIf="item.mosG">{{ item.mosG }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Video Streaming Higher Resolution</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 6">
+              <tr>
+                <th >Video Bitrate</th>
+                <th >Freezing Ratio</th>
+                <th >Video PLC</th>
+                <th ># Pixels Per Video Frame</th>
+                <th >Slice/Frame</th>
+                <th >Video Resolution</th>
+                <th >Frame Rate</th>
+                <th >Loss Magnitude</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.videoBitrate">{{ item.videoBitrate }}</td>
+                <td *ngIf="item.freezingRatio">{{ item.freezingRatio }}</td>
+                <td *ngIf="item.videoPLC">{{ item.videoPLC}}</td>
+                <td *ngIf="item.numPixelsPerVideo">{{ item.numPixelsPerVideo }}</td>
+                <td *ngIf="item.sliceFrame">{{ item.sliceFrame }}</td>
+                <td *ngIf="item.videoResolution">{{ item.videoResolution }}</td>
+                <td *ngIf="item.frameRate">{{ item.frameRate }}</td>
+                <td *ngIf="item.lossMagnitude">{{ item.lossMagnitude }}</td>
+                <td *ngIf="item.mosVSHR">{{ item.mosVSHR }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Video Streaming Lower Resolution</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 7">
+              <tr>
+                <th >Packet Loss</th>
+                <th >Rebuffering</th>
+                <th >Video Width</th>
+                <th >Video Height</th>
+                <th >Video PLC</th>
+                <th >Average rebuffering length</th>
+                <th ># Rebuffering Events</th>
+                <th >Multiple rebuffering events effect factor</th>
+                <th >Video Content Complexity Coding Compression</th>
+                <th >Other Coding Compression</th>
+                <th >Variable num Buffering Events</th>
+                <th >Measure Time</th>
+                <th >Average Burst IP Packet Loss</th>
+                <th >IP Packet Loss Rate</th>
+                <th >GOP Length</th>
+                <th >Video Bitrate</th>
+                <th >Video Frame Rate</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.packetLoss">{{ item.packetLoss }}</td>
+                <td *ngIf="item.rebuffering">{{ item.rebuffering }}</td>
+                <td *ngIf="item.videoWidth">{{ item.videoWidth}}</td>
+                <td *ngIf="item.videoHeight">{{ item.videoHeight }}</td>
+                <td *ngIf="item.videoPLC">{{ item.videoPLC }}</td>
+                <td *ngIf="item.rebufferingLength">{{ item.rebufferingLength }}</td>
+                <td *ngIf="item.numRebufferingEvents">{{ item.numRebufferingEvents }}</td>
+                <td *ngIf="item.rebufferingFactor">{{ item.rebufferingFactor }}</td>
+                <td *ngIf="item.videoContentCoding">{{ item.videoContentCoding }}</td>
+                <td *ngIf="item.codingCompression">{{ item.codingCompression }}</td>
+                <td *ngIf="item.numVideos">{{ item.numVideos }}</td>
+                <td *ngIf="item.measureTime">{{ item.measureTime}}</td>
+                <td *ngIf="item.ipPacketLoss">{{ item.ipPacketLoss }}</td>
+                <td *ngIf="item.ipPacketLossRate">{{ item.ipPacketLossRate }}</td>
+                <td *ngIf="item.gopLength">{{ item.gopLength }}</td>
+                <td *ngIf="item.videoBitrate">{{ item.videoBitrate }}</td>
+                <td *ngIf="item.videoFrameRate">{{ item.videoFrameRate }}</td>
+                <td *ngIf="item.mosVSLR">{{ item.mosVSLR }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Video Telephony</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 8">
+              <tr>
+                <th >Video Packet-Loss Rate </th>
+                <th >Video Frame Rate</th>
+                <th >Video Bitrate </th>
+                <th >Combination</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.videoPacketLoss">{{ item.videoPacketLoss }}</td>
+                <td *ngIf="item.videoFrameRate">{{ item.videoFrameRate }}</td>
+                <td *ngIf="item.videoBitRate">{{ item.videoBitRate}}</td>
+                <td *ngIf="item.combinationVT">{{ item.combinationVT }}</td>
+                <td *ngIf="item.mosVT">{{ item.mosVT }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Voice Telephony Narrowband</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 9">
+              <tr>
+                <th >Speech Delay </th>
+                <th >Speech Packet-Loss Rate </th>
+                <th >Talker Echo Loudness Rating </th>
+                <th >Combination</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.speechDelayNB">{{ item.speechDelayNB }}</td>
+                <td *ngIf="item.speechPacketLossRateNB">{{ item.speechPacketLossRateNB }}</td>
+                <td *ngIf="item.talkerEchoLoudnessNB">{{ item.talkerEchoLoudnessNB}}</td>
+                <td *ngIf="item.combination">{{ item.combination }}</td>
+                <td *ngIf="item.mosVTNB">{{ item.mosVTNB }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Voice Telephony Wideband</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 10">
+              <tr>
+                <th >Speech Delay </th>
+                <th >Speech Packet-Loss Rate </th>
+                <th >Talker Echo Loudness Rating </th>
+                <th >Equipment Impairment Factor</th>
+                <th >Packet-Loss Robustness Factor</th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.speechDelay">{{ item.speechDelay }}</td>
+                <td *ngIf="item.speechPacketLossRate">{{ item.speechPacketLossRate }}</td>
+                <td *ngIf="item.talkerEchoLoudness">{{ item.talkerEchoLoudness}}</td>
+                <td *ngIf="item.equipmentImpairment">{{ item.equipmentImpairment }}</td>
+                <td *ngIf="item.packetLossRoubustness">{{ item.packetLossRoubustness }}</td>
+                <td *ngIf="item.mosVTWB">{{ item.mosVTWB }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Web-Browsing 1 Page Session</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 11">
+              <tr>
+                <th >Expected Maximum Session Time </th>
+                <th >Session time </th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.expectedSessionTime1PS">{{ item.expectedSessionTime1PS }}</td>
+                <td *ngIf="item.sessionTime1PS">{{ item.sessionTime1PS }}</td>
+                <td *ngIf="item.mosW1PS">{{ item.mosW1PS }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Web-Browsing 2 Page Session</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 12">
+              <tr>
+                <th >Expected Maximum Session Time </th>
+                <th >Session time </th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.expectedSessionTime2PS">{{ item.expectedSessionTime2PS }}</td>
+                <td *ngIf="item.sessionTime2PS">{{ item.sessionTime2PS }}</td>
+                <td *ngIf="item.mosW2PS">{{ item.mosW2PS }}</td>
+            </ng-container>
+          </ng-container>
+        </table>
+        <br>
+        <h3>Web-Browsing Single Timing Event</h3> 
+        <table>
+          <ng-container *ngFor="let mapping of Response; let i = index">
+            <ng-container *ngIf="i === 13">
+              <tr>
+                <th >Expected Maximum Session Time </th>
+                <th >Session time </th>
+                <th >MOS</th>
+              </tr>
+              <tr *ngFor="let item of mapping.data">
+                <td *ngIf="item.expectedSessionTimeSTE">{{ item.expectedSessionTimeSTE }}</td>
+                <td *ngIf="item.sessionTimeSTE">{{ item.sessionTimeSTE }}</td>
+                <td *ngIf="item.mosWSTE">{{ item.mosWSTE }}</td>
+            </ng-container>
+          </ng-container>
+        </table>        
+    </div>   
   </div>
 </body>

@@ -14,11 +14,11 @@ export class UserProfileComponent implements OnInit{
   audioStreamingHRArray: Array<any>;
 
   constructor(public usersService: UsersService, private router: Router) { 
-    this.usersService.Response.subscribe(response =>{
-      this.Response = response;
-      //console.log(this.Response)
+    this.usersService.Response.subscribe(mappings =>{
+      this.Response = mappings;
+      console.log(this.Response)
     });
-  } 
+  }  
 
   ngOnInit(): void {
     this.usersService.getUserInfo();
